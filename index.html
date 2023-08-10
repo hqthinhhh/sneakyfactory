@@ -317,20 +317,32 @@
             </p>
           </div>
           <div class="col-md-5">
-            <svg
-              class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-              width="500"
-              height="500"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: 500x500"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#eee" />
-              <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-            </svg>
+            <div>
+        <div class="bd-example">
+          <form
+            id="test-form"
+            method="GET"
+            action="https://script.google.com/macros/s/AKfycbwdbmSW3yQxJcLuARnvSTAhAS2cSe5_0plJXwxiUWyf_4K59JSWEBbLtyCpBxqv2_kskw/exec"
+          >
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Họ Tên</label>
+              <input required type="text" name="name" class="form-control" placeholder="Họ Tên" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email</label>
+              <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email của bạn" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Số Điện Thoại</label>
+              <input required type="tel" name="phone" class="form-control" placeholder="Số Điện Thoại" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Ghi chú</label>
+              <textarea type="text" name="note" class="form-control" id="exampleInputPassword1"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
           </div>
         </div>
 
@@ -411,3 +423,33 @@
     <script src="dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
+
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    var submit = $("button[type='submit']");
+    submit.click(function () {
+      var form = $("form#test-form");
+      var data = $("form#test-form").serialize();
+      console.log(data)
+      $.ajax({
+        type: "GET",
+        url: "https://script.google.com/macros/s/AKfycbzWp8CggeQyHJ9eUw2SOJXjMkTdl99awKR_-2X0yn8xxXKxovALbwimCvkT0_rYfzfwRQ/exec",
+        dataType: "json",
+        crossDomain: true,
+        data: data,
+        success: function (data) {
+          if (data == "false") {
+            alert(
+              "Thêm không thành công, bạn cũng có thể sử dụng để hiển thị Popup hoặc điều hướng"
+            );
+          } else {
+            alert("Đã thêm dữ liệu vào Form");
+            form.get(0).reset()
+          }
+        },
+      });
+      return false;
+    });
+  });
+</script>
