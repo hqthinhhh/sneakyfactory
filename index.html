@@ -429,6 +429,7 @@
   $(document).ready(function () {
     var submit = $("button[type='submit']");
     submit.click(function () {
+      event.preventDefault();
       var form = $("form#test-form");
       var data = $("form#test-form").serialize();
       console.log(data)
