@@ -321,7 +321,7 @@
         <div class="bd-example">
           <form
             id="test-form"
-            method="GET"
+            method="POST"
             action="https://script.google.com/macros/s/AKfycbwdbmSW3yQxJcLuARnvSTAhAS2cSe5_0plJXwxiUWyf_4K59JSWEBbLtyCpBxqv2_kskw/exec"
           >
             <div class="mb-3">
@@ -434,8 +434,8 @@
       var data = $("form#test-form").serialize();
       console.log(data)
       $.ajax({
-        type: "GET",
-        url: "https://script.google.com/macros/s/AKfycbzWp8CggeQyHJ9eUw2SOJXjMkTdl99awKR_-2X0yn8xxXKxovALbwimCvkT0_rYfzfwRQ/exec",
+        type: "POST",
+        url: "https://script.google.com/macros/s/AKfycbx_U0moh49JfFCy9SNqzUskaV8qnQSVPz9Ley8KU-fSLQldeyZVsKC_F5ZA8Fi1r5QdHw/exec",
         dataType: "json",
         crossDomain: true,
         data: data,
@@ -452,5 +452,6 @@
       });
       return false;
     });
+    return false;
   });
 </script>
